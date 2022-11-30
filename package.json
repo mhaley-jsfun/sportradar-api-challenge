@@ -1,0 +1,24 @@
+{
+  "name": "sportradar-api-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhaley-jsfun/sportradar-api-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhaley-jsfun/sportradar-api-challenge/issues"
+  },
+  "homepage": "https://github.com/mhaley-jsfun/sportradar-api-challenge#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
