@@ -6,6 +6,8 @@ import Games from "./pages/Games";
 import Standing from "./pages/Standing";
 import Players from "./pages/Players";
 import Live from "./pages/Live";
+import axios from "axios";
+import { useState } from "react";
 function App() {
   return (
     <div className="App h-full">

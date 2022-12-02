@@ -1,6 +1,6 @@
-CREATE DATABASE player;
-USE player;
-CREATE TABLE Information
+CREATE DATABASE NHL;
+USE NHL;
+CREATE TABLE player
  (
  player_id int NOT NULL  AUTO_INCREMENT,
  player_name VARCHAR(20) NOT NULL,
