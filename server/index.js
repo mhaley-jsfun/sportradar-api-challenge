@@ -2,6 +2,8 @@ import express from "express";
 import axios from "axios";
 import fetch from "node-fetch";
 import { getNotes, getNote, createNote } from "./database.js";
+import converter from "json-2-csv";
+// import { addTeam } from "./Team_DataBase";
 import cors from "cors";
 const app = express();
 
@@ -14,7 +16,9 @@ app.get("/notes", async (req, res) => {
   try {
     const notes = await getNotes();
     res.status(200).send(notes);
-  } catch (error) {}
+  } catch (error) {
+    res.status(401).json(error.message);
+  }
 });
 
 app.get("/notes/:id", async (req, res) => {
@@ -27,11 +31,57 @@ app.get("/notes/:id", async (req, res) => {
   }
 });
 app.get("/teams", async (req, res) => {
-  const teamApi = "https://statsapi.web.nhl.com/api/v1/tournamentTypes";
+  const teamApi = "https://statsapi.web.nhl.com/api/v1/teams";
   const response = await fetch(teamApi);
   const json = await response.json();
-  res.send(json);
-  console.log(json, "json");
+  const arr = await json.teams;
+
+  const teamArray = await Promise.all(
+    arr.map((team) => {
+      const name = team.name;
+      const id = team.id;
+      const venue = team.venue.name;
+
+      return {
+        name,
+        id,
+        venue,
+      };
+    })
+  );
+  res.json(teamArray);
+
+  // try {
+  //   const newArr = await Promise.all(
+  //     arr.map((team) => {
+  //       return team;
+  //     })
+  //   );
+  //   const csv = converter.json2csv(newArr, (err, csv) => {
+  //     if (err) {
+  //       throw err;
+  //     }
+
+  //     // print CSV string
+  //     // console.log(csv);
+  //   });
+  //   res.status(200).json("sucsuss");
+  //   console.log("csv sucess");
+  // } catch (error) {
+  //   console.log(error);
+  // }
+
+  // console.log(arr, "json");
+});
+app.get("/teams/:id", async (req, res) => {
+  const id = req.params.id;
+  const teamApi = `https://statsapi.web.nhl.com/api/v1/teams/${id}`;
+  const response = await fetch(teamApi);
+  const json = await response.json();
+  const arr = await json.teams;
+
+  res.json(arr[0]);
+  console.log(arr, "json");
 });
 app.get("/stats/:id", async (req, res) => {
   const id = req.params.id;
@@ -41,8 +91,19 @@ app.get("/stats/:id", async (req, res) => {
   const json = await response.json();
   res.json(json.stats);
   // res.json(json.stats);
+  // console.log(json, "json");
+});
+app.get("/schedule", async (req, res) => {
+  const scheduleApi =
+    "https://statsapi.web.nhl.com/api/v1/schedule?expand=schedule.broadcasts";
+  const response = await fetch(scheduleApi);
+  const json = await response.json();
+  const [teams] = json.dates;
+
+  res.json(teams.games);
   console.log(json, "json");
 });
+
 app.post("/notes", async (req, res) => {
   try {
     const { title, contents } = req.body;
@@ -52,6 +113,15 @@ app.post("/notes", async (req, res) => {
     res.status(404).json(error.message);
   }
 });
+// app.post("/teams", async (req, res) => {
+//   try {
+//     const { team_id, team_name } = req.body;
+//     const team = await addTeam(team_id, team_name);
+//     res.json(team);
+//   } catch (error) {
+//     res.json(error.message, "backend err");
+//   }
+// });
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
