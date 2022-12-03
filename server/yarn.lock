@@ -174,6 +174,11 @@ debug@^3.2.7:
   dependencies:
     ms "^2.1.1"
 
+deeks@2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/deeks/-/deeks-2.6.0.tgz#62d052aee1fc3efbd15d1bfcb98f54cbe420d807"
+  integrity sha512-zu/g4fVjPreYuP11f3o5W7TeSRscpnn9LQO15lxIXu66MwOopIxj4jhLDEGMW7JkZYqWEz5JG3qs88kHNMY08g==
+
 delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
@@ -193,6 +198,11 @@ destroy@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.2.0.tgz#4803735509ad8be552934c67df614f94e66fa015"
   integrity sha512-2sJGJTaXIIaR1w4iJSNoN0hnMY7Gpc/n8D4qSCJw8QqFWXf7cuAgnEHxBpweaVcPevC2l3KpjYCx3NypQQgaJg==
+
+doc-path@3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/doc-path/-/doc-path-3.0.6.tgz#b7dfa6ee649e5b8a554be03333bdddcd38fcbd69"
+  integrity sha512-fUNXXk+4MbfKkXec41cIyD5DTPISVD0MzMPWX2qz+kL7otFtQRHCkyPaD8qmLyQpfYQWye/z7oXeeD0nQp8HYQ==
 
 dotenv@^16.0.3:
   version "16.0.3"
@@ -433,6 +443,14 @@ is-property@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/is-property/-/is-property-1.0.2.tgz#57fe1c4e48474edd65b09911f26b1cd4095dda84"
   integrity sha512-Ks/IoX00TtClbGQr4TWXemAnktAQvYB7HzcCxDGqEZU6oCmb2INHuOoKxbtR+HFkmYWBKv/dOZtGRiAjDhj92g==
+
+json-2-csv@^3.18.0:
+  version "3.18.0"
+  resolved "https://registry.yarnpkg.com/json-2-csv/-/json-2-csv-3.18.0.tgz#2752e244ae2661a23f78d4f25c90ba54bd7219e3"
+  integrity sha512-+1lxMDaIx71QWVaENrphLb+o9xUY34nxVW6dKiRzFM2YYyxFbIkKNn4J3oVEOn/xxNtkmg8XVGmpZT+wIoi5xw==
+  dependencies:
+    deeks "2.6.0"
+    doc-path "3.0.6"
 
 long@^4.0.0:
   version "4.0.0"

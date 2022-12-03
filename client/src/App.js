@@ -8,11 +8,13 @@ import Players from "./pages/Players";
 import Live from "./pages/Live";
 import axios from "axios";
 import { useState } from "react";
+import Home from "./pages/Home";
 function App() {
   return (
     <div className="App h-full">
       <Header />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/games" element={<Games />} />
         <Route path="/standing" element={<Standing />} />
         <Route path="players" element={<Players />} />
