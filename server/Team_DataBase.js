@@ -10,22 +10,11 @@ const pool = mysql
     database: process.env.DATABASE,
   })
   .promise();
-export async function getTeam(id) {
-  const [title] = await pool.query(`SELECT * FROM Teams WHERE id =?`, [id]);
-  return title;
-}
-// export async function addTeams(team_id, team_name, team_venue, isActive) {
-//   const [result] = await pool.query(
-//     `INSERT INTO Teams (team_id, team_name,team_venue, isActive) VALUES (?,?,?,?)`,
-//     [team_id, team_name, team_venue, isActive]
-//   );
-//   const id = result.insertId;
-//   return getTeam(id);
-// }
+
 export async function addTeam(team_id, team_name) {
   const [result] = await pool.query(
     `INSERT INTO team (team_id, team_name) VALUES (?,?)`,
-    [team_id, team_name, team_venue, isActive]
+    [team_id, team_name]
   );
   //   const id = result.insertId;
   return result;
