@@ -11,24 +11,22 @@ const pool = mysql
   })
   .promise();
 
-export async function getNotes() {
-  const [row] = await pool.query("SELECT * FROM notes");
+export async function addTeam(id, name) {
+  if (id === undefined && name === undefined) {
+    console.log("error");
+  } else {
+    console.log(id, name, "name");
+    const [result] = await pool.query(
+      `INSERT INTO team (id, name) VALUES (?,?)`,
+      [id, name]
+    );
+    //   const id = result.insertId;
+    return result;
+  }
+}
+export async function getTeam() {
+  const [row] = await pool.query("SELECT * FROM team");
   return row;
 }
-export async function getNote(id) {
-  const [title] = await pool.query(`SELECT * FROM notes WHERE id =?`, [id]);
-  return title;
-}
-export async function createNote(title, contents) {
-  const [result] = await pool.query(
-    `INSERT INTO notes (title, contents) VALUES (?,?)`,
-    [title, contents]
-  );
-  const id = result.insertId;
-  return getNote(id);
-}
-
-const note = await getNote();
-const result = await getNote(2);
-const createNewNote = await createNote("myThird note", "about life");
-// console.log(createNewNote, "note");
+const newTeam = await addTeam();
+// console.log(newTeam, "newteam");
