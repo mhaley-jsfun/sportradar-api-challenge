@@ -4,7 +4,8 @@
 A brief description of what this project does and who it's for
 
 
-An advanced node-js and my sql project this app continualy watches for game status an update the data-base when the data-base updates the express server return the updated data to the client ; 
+An advanced node-js and my sql project this app continualy watches for game status an update the data-base when the data-base updates the express server return the updated data to the client ;
+this app use node-crone library to call the functon thats makes the api call every second that way the database is in sync with the current status and gives the client live feed to the game status  
 
 
 ## Environment Variables
@@ -49,4 +50,3 @@ To run tests, run the following command
 **Server:** Node, Express 
 
 **test:**  Jest and super-test
-
