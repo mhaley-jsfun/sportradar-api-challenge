@@ -47,6 +47,6 @@ To run tests, run the following command
 
 **Client:** React, TailwindCSS
 
-**Server:** Node, Express node-crone
+**Server:** Node, Express , node-crone
 
 **test:**  Jest and super-test
