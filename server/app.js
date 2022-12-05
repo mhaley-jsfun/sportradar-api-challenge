@@ -1,6 +1,7 @@
 import express from "express";
 import fetch from "node-fetch";
 import cors from "cors";
+import cron from "node-cron";
 import { addTeam, getTeam, addPlayer, getPlayer } from "./database.js";
 const app = express();
 
@@ -37,10 +38,10 @@ app.get("/live/feed", async (req, res) => {
   const LiveGamesApi = `https://statsapi.web.nhl.com/api/v1/game/${id}/feed/live`;
   const response = await fetch(LiveGamesApi);
   const json = await response.json();
-  const teams = await json.gameData.teams;
+  const teams = await json.gameData;
   const players = await json.gameData.players;
   // we will compare the current time and game match time if returns true we will send the match status an player status
-  res.json({ teams, players });
+  res.json({ teams });
 });
 
 app.get("/teams/:id", async (req, res) => {
@@ -88,7 +89,10 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke 💩");
 });
+if (process.env.NODE_ENV !== "test") {
+  app.listen(8080, () => {
+    console.log("Server is running on port 8080");
+  });
+}
 
-app.listen(8080, () => {
-  console.log("Server is running on port 8080");
-});
+export default app;
