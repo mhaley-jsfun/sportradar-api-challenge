@@ -51,7 +51,9 @@ app.get("/teams/:id", async (req, res) => {
   const json = await response.json();
   const arr = await json.teams;
   // this route only send active player on the team
-  res.json(arr[0].roster.roster);
+  arr.map((team) => {
+    res.json(team.roster.roster);
+  });
 });
 
 app.get("/stats/:id", async (req, res) => {

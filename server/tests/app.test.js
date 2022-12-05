@@ -1,4 +1,3 @@
-import supertest from "supertest";
 import app from "../app";
 import dotenv from "dotenv";
 import mysql from "mysql2";
@@ -25,10 +24,17 @@ describe("GET /teams", () => {
 });
 describe("GET /teams", () => {
   it("should return all teams", async () => {
-    const res = await request(app).get("/live/feed");
+    const res = await request(app).get("/teams");
     expect(res.statusCode).toBe(200);
-    // expect(res.body.length).toBeGreaterThan(0);
+    expect(res.body.length).toBeGreaterThan(0);
     expect(res.body).to;
+  });
+});
+describe("GET /teams/1", () => {
+  it("should return a single team withe the given id teams", async () => {
+    const res = await request(app).get("/teams/1");
+    expect(res.statusCode).toBe(200);
+    expect(res.body.length).toBeGreaterThan(0);
   });
 });
 

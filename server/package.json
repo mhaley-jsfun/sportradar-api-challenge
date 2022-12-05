@@ -5,7 +5,7 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules npx cross-env NODE_ENV=test jest --testTimeout=5000",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx cross-env NODE_ENV=test jest --testTimeout=10000",
     "start": "nodemon",
     "start-ingestion": "node ./scheduler.js"
   },
