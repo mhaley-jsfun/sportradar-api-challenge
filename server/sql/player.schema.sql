@@ -14,3 +14,8 @@ points int,
 penaltyMinutes int,
 primary key(id)
 )
+CREATE TABLE team(
+id int,
+  name varchar(100)
+  PRIMARY KEY (id)
+)
