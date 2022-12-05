@@ -10,7 +10,6 @@ function Header() {
       <div className=" cursor-pointer w-3/4 flex justify-around">
         <Link to="/games">Games</Link>
         <Link to="/standing">Standing</Link>
-        <Link to="/players">Player</Link>
         <Link to="/live">Live</Link>
       </div>
     </div>

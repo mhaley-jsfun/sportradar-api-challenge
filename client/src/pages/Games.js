@@ -1,11 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 function Games() {
-  const [players, setPlayers] = useState([]);
   const [schedule, setSchedule] = useState([]);
-  const [toggle, setToggle] = useState(true);
   useEffect(() => {
     // axios.get("http://localhost:8080/teams").then((res) => {
     //   setPlayers(res.data);
@@ -34,7 +31,7 @@ function Games() {
                   {idx.teams.away.team.id} away
                 </p>
               </div>
-              <div clas>
+              <div>
                 <p>vs</p>
                 <p>{idx.gameDate}</p>
               </div>
