@@ -5,8 +5,9 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx cross-env NODE_ENV=test jest --testTimeout=5000",
+    "start": "nodemon",
+    "start-ingestion": "node ./scheduler.js"
   },
   "repository": {
     "type": "git",
@@ -21,15 +22,22 @@
   "homepage": "https://github.com/mhaley-jsfun/sportradar-api-challenge#readme",
   "dependencies": {
     "axios": "^1.2.0",
+    "babel-jest": "^29.3.1",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "json-2-csv": "^3.18.0",
+    "moment": "^2.29.4",
     "mysql2": "^2.3.3",
+    "node-cron": "^3.0.2",
     "node-fetch": "^3.3.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "ts-jest": "^29.0.3"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@types/node-cron": "^3.0.6",
     "jest": "^29.3.1",
     "supertest": "^6.3.2"
   }
